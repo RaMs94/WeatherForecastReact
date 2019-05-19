@@ -16,7 +16,7 @@ export async function leggeMeteo(entita, lat, lon, api_key) {
 }
 
 export async function leggeMeteoSettimanale(lat, lon, api_key) {
-  let str = `http://api.worldweatheronline.com/premium/v1/weather.ashx?key=${api_key}&q=${lat},${lon}&format=json&num_of_days=7&tp=24`;
+  let str = `https://api.worldweatheronline.com/premium/v1/weather.ashx?key=${api_key}&q=${lat},${lon}&format=json&num_of_days=7&tp=24`;
   let ris;
   await fetch(
     str
