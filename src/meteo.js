@@ -8,7 +8,6 @@ const Meteo = ({ dati }) => {
   const ImageTempo = () => {
     switch (CondTempo) {
       case "Thunderstorm": {
-        console.log("Thunderstorm");
         return (
           <div>
             <img
@@ -20,7 +19,6 @@ const Meteo = ({ dati }) => {
         );
       }
       case "Rain": {
-        console.log("Rain");
         return (
           <div>
             <img
@@ -32,7 +30,6 @@ const Meteo = ({ dati }) => {
         );
       }
       case "Clouds": {
-        console.log("Thunderstorm");
         return (
           <div>
             <img
@@ -44,7 +41,6 @@ const Meteo = ({ dati }) => {
         );
       }
       case "Clear": {
-        console.log("Clear");
         return (
           <div>
             <img
