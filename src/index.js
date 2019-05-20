@@ -44,7 +44,6 @@ class App extends Component {
       humidity: data.main.humidity,
       pressure: data.main.pressure
     });
-    console.log("Dati Weather", data);
   }
 
   showError(error) {
@@ -83,6 +82,7 @@ class App extends Component {
       map: map,
       title: "Ti trovi qui!"
     });
+    marker.setMap(map);
   };
 
   componentDidMount() {
@@ -96,7 +96,7 @@ class App extends Component {
           <div className="flip-card-inner">
             <div className="flip-card-front">
               <Meteo dati={this.state} />
-              <MeteoSettimanale dati={this.state} />
+              <MeteoSettimanale />
             </div>
             <div className="flip-card-back">
               <div id="map" />
