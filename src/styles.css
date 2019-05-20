@@ -1,8 +1,7 @@
-
 .flip-card {
   background-color: transparent;
   width: 768px;
-  height: 545px!important;
+  height: 545px !important;
   perspective: 1000px;
 }
 
@@ -13,14 +12,15 @@
   text-align: center;
   transition: transform 0.6s;
   transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
 
-.flip-card-front, .flip-card-back {
+.flip-card-front,
+.flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -41,11 +41,11 @@
   z-index: 1;
 }
 
-.marker{
-/* margin-top:0.5em; */
-padding:0.97em;
-width:24px;
-height:24px;
+.marker {
+  /* margin-top:0.5em; */
+  padding: 0.97em;
+  width: 24px;
+  height: 24px;
 }
 
 .rome {
@@ -68,8 +68,8 @@ height:24px;
   /* width: 144px; */
 }
 
-.combined-shape {	
-  height: 131.64px;	
+.combined-shape {
+  height: 131.64px;
   width: 144px;
 }
 
@@ -113,13 +113,14 @@ height:24px;
   box-sizing: border-box;
   height: 1px;
   width: 755px;
-  margin-right:auto;
-  margin-left:auto;
+  margin-right: auto;
+  margin-left: auto;
   border: 1px solid #ffffff;
   opacity: 0.18;
 }
 
-.rectangle {
+.rectangle {  
+  display: -webkit-box;
   height: 140px;
   width: 95px;
   border: 1px solid #c69887;
@@ -127,51 +128,50 @@ height:24px;
   background-color: rgba(247, 248, 250, 0.18);
 }
 
-.rectangleInvisible{
+.rectangleInvisible {
   height: 140px;
   width: 95px;
   border-radius: 12px;
-  background-color:transparent;
-  padding:0em 0.5em;
-
+  background-color: transparent;
+  /* padding: 0em 0.5em; */
 }
 
 .data {
-  margin-right:auto;
-  margin-left:auto;
-  margin:0;
+  padding: 1em;
+  margin-right: auto;
+  margin-left: auto;
+  margin: 0;
   height: 19px;
-  /* width: 48px;	 */
-  color: #FFFFFF;	
-  font-family: "Open Sans";	
-  font-size: 14px;	
-  font-weight: 300;	
-  line-height: 19px;	
+  color: #ffffff;
+  font-family: "Open Sans";
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 19px;
   text-align: center;
 }
 
 .day {
-  height: 19px;	
-  /* width: 57px;	 */
-  color: #FFFFFF;	
-  font-family: "Open Sans";	
-  font-size: 14px;	
+  height: 19px;
+  width: 57px;
+  color: #ffffff;
+  font-family: "Open Sans";
+  font-size: 14px;
   line-height: 19px;
   text-align: center;
 }
 
 .weather {
-  height: 42px;	
+  height: 42px;
   width: 54px;
 }
 
-#map{
-  width:100%;
-  height:100%;
+#map {
+  width: 100%;
+  height: 100%;
 }
 
-.oval-1 {	
-  height: 42px;	
-  width: 54px;	
+.oval-1 {
+  height: 42px;
+  width: 54px;
   /* background-color: #FFFFFF; */
 }
