@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles.css";
+import { leggeMeteoSettimanale } from "./utils";
 
 const api_key = "c689571660374f97823214424191705";
 
@@ -8,9 +9,48 @@ class MeteoSettimanale extends React.Component {
     super(props);
     this.state = {
       datiTempo: [],
-      lat: this.props.dati.lat,
-      lon: this.props.dati.lon
+      lat: 0,
+      lon: 0
     };
+    navigator.geolocation.getCurrentPosition(
+      this.showPosition.bind(this),
+      this.showError.bind(this)
+    );
+  }
+
+  async showPosition(position) {
+    this.setState({
+      lat: position.coords.latitude,
+      lon: position.coords.longitude
+    });
+    let data = await leggeMeteoSettimanale(
+      api_key,
+      this.state.lat,
+      this.state.lon
+    );
+    console.log("Dati Forecast", data);
+    this.setState({
+      datiTempo: data.data.weather
+    });
+  }
+
+  showError(error) {
+    switch (error.code) {
+      case error.PERMISSION_DENIED:
+        console.log("User denied the request for Geolocation.");
+        break;
+      case error.POSITION_UNAVAILABLE:
+        console.log("Location information is unavailable.");
+        break;
+      case error.TIMEOUT:
+        console.log("The request to get user location timed out.");
+        break;
+      case error.UNKNOWN_ERROR:
+        console.log("An unknown error occurred.");
+        break;
+      default:
+        console.log("Default Error");
+    }
   }
 
   ImageTempo = value => {
@@ -30,7 +70,8 @@ class MeteoSettimanale extends React.Component {
           </div>
         );
       }
-      case "Partly cloudy": {
+      case "Partly cloudy":
+      case "Cloudy": {
         // console.log("Nuvoloso")
         return (
           <div>
@@ -67,43 +108,23 @@ class MeteoSettimanale extends React.Component {
     return [dayName, " ", numberDate];
   }
 
-  leggeMeteoSettimanale() {
-    let str = `https://api.worldweatheronline.com/premium/v1/weather.ashx?key=${api_key}&q=${this.state.lat},${this.state.lon}&format=json&num_of_days=7&tp=24`;
-    let ris;
-    fetch(str)
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          datiTempo: data.data.weather
-        });
-        console.log("Dati Forecast", data);
-        console.log("Dati Tempo", this.state.datiTempo);
-      })
-      .catch(e => console.log("error", e));
-    return ris;
-  }
-
-  componentDidMount() {
-    this.leggeMeteoSettimanale();
-  }
-
   render() {
     return (
-      <div style={{padding: "0.5em 3em"}}>
-      <div className="rectangle">
-        {this.state.datiTempo.map(element => (
-          <div className="rectangleInvisible">
-            <div name="data" className="data">
-              {this.getDataGiorno(element.date)}
-            </div>
-            <div>
-              {this.ImageTempo(element.hourly[0].weatherDesc[0].value)}
-            </div>
-            <div className="data">
-              {element.maxtempC}°-{element.mintempC}°
+      <div style={{ padding: "0.5em 3em" }}>
+        <div className="rectangle">
+          {this.state.datiTempo.map(element => (
+            <div className="rectangleInvisible">
+              <div name="data" className="data">
+                {this.getDataGiorno(element.date)}
               </div>
-          </div>
-        ))}
+              <div>
+                {this.ImageTempo(element.hourly[0].weatherDesc[0].value)}
+              </div>
+              <div className="data">
+                {element.maxtempC}°-{element.mintempC}°
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     );
