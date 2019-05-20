@@ -66,10 +66,14 @@ const Meteo = ({ dati }) => {
 
   return (
     <div>
-      <div style={{display:'-webkit-inline-box'}}>
-      <img className="marker" src="https://i.ibb.co/DGkyvSb/marker.png" alt="marker"/>
-      <h1 className="rome">{dati.name}</h1>
-        </div>
+      <div style={{ display: "-webkit-inline-box" }}>
+        <img
+          className="marker"
+          src="https://i.ibb.co/DGkyvSb/marker.png"
+          alt="marker"
+        />
+        <h1 className="rome">{dati.name}</h1>
+      </div>
       <h1 className="TempoAttuale">{ImageTempo(dati.weatherMain)}</h1>
       <h1 className="Temperatura">{TempCelsius}°</h1>
       <h4 className="feels-like">Feels like: {TempCelsius}°</h4>
